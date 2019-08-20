@@ -1,0 +1,16 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: prometheus-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: prometheus-pv-volume
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Recycle
+  nfs:
+    path: "/nfs/prometheus_server"
+    server: 172.31.10.220

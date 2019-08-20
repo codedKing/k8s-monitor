@@ -25,15 +25,38 @@
 配置文件持久化：配置文件存放到本地，每次更新就可。
 #### 安装教程
 
-1. xxxx
-2. xxxx
-3. xxxx
+1. 创建命名空间namespace.yaml和node-exporter.yaml 并执行
+    kubectl  create -f namespace.yaml
+	kubectl  create -f node-exporter.yaml
+2. 创建Prometheus和Grafana的pv，pvc 并执行
+	kubectl  create -f prometheus-pv.yaml
+	kubectl  create -f prometheus-pvc.yaml
+	kubectl  create -f grafana-pv.yaml
+	kubectl  create -f grafana-pvc.yaml
+3. 配置prometheus的configmap.yaml，添加监控的机器如：
+   - job_name: '172.31.10.192'
+      static_configs:
+        - targets: ['172.31.10.192:9100']
+          labels:
+            name: 172.31.10.192
+            instance: 172.31.10.192
+            env: prod
+	执行配置 kubectl create -f configmap.yaml
+	3.1创建prometheus启动需要的SA账户，只有具体有特殊的权限，prometheus应用才可以读取API Sever和POD的相关数据
+	kubectl create -f rbac-setup.yaml
+	3.2创建Prometheus的svc，用于访问prometheus。使用NodePort类型
+	kubectl create -f  prometheus.svc.yml
+	3.3 配置prometheus的部署文件prometheus.deploy.yml 并执行
+	kubectl create -f  prometheus.svc.yml
+4.创建grafana的svc 并执行
+	kubectl  create -f grafana-svc.yaml
+5.创建grafana的ingress 并执行
+	kubectl  create -f grafana-ing.yaml
+6.创建grafana的deploy 并执行
+	kubectl  create -f grafana-deploy.yaml
+7.执行需要监控机器的内部指标（cpu,内存等）转到node_exporter-0.18.1.linux-amd64目录
+    ./node_exporter &
 
-#### 使用说明
-
-1. xxxx
-2. xxxx
-3. xxxx
 
 #### 参与贡献
 
