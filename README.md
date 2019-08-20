@@ -34,7 +34,7 @@
 	kubectl  create -f grafana-pv.yaml
 	kubectl  create -f grafana-pvc.yaml
 3. 配置prometheus的configmap.yaml，添加监控的机器如：
-   
+```
    - job_name: '172.31.10.192'
       static_configs:
         - targets: ['172.31.10.192:9100']
@@ -42,8 +42,9 @@
             name: 172.31.10.192
             instance: 172.31.10.192
             env: prod
-
-   执行配置 kubectl create -f configmap.yaml
+```
+   执行配置 
+    `kubectl create -f configmap.yaml`
 
   3.1创建prometheus启动需要的SA账户，只有具体有特殊的权限，prometheus应用才可以读取API Sever和POD的相关数据
 
