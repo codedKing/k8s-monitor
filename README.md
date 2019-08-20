@@ -90,10 +90,22 @@
 
 http://172.16.95.123:3000
 
-配置完数据源就可以对Prometheus监控数据进行收集啦！！！
+
+### 配置完数据源
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/101456_0d2f51e7_435593.png "QQ截图1.png")
-导入模版
 ![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/101846_192682da_435593.png "QQ截图2.png")
+
+### 导入模版
+
+可以直接将准备好的模版（在文件k8s_grafana_panel_json下有三个模版）导入到grafana
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/102036_835c6102_435593.png "微信图片3.png")
+
+### 展示效果
+
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/102516_2299479d_435593.png "QQ截图11.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/102502_bf497155_435593.png "QQ截图22.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/102533_e26d796e_435593.png "QQ截图33.png")
+
 #### 参与贡献
 
 1. Fork 本仓库
