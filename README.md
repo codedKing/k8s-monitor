@@ -6,7 +6,23 @@
 #### 软件架构
 ![软件架构说明](https://images.gitee.com/uploads/images/2019/0820/092914_b5549966_435593.png "图片2.png")
 
+架构说明：
 
+1. Prometheus Server：核心组件，负责收刮和存储时序数据（time series data），并且提供查询接口。
+
+2. Jobs/Exporters：客户端，监控并采集指标，对外暴露HTTP服务（/metrics）。
+
+3. Pushgateway：针对push系统设计，Short-lived jobs定时将指标push到Pushgateway，再由Prometheus Server从Pushgateway上pull。
+
+4. Alertmanager：报警组件，根据实现配置的规则（rule）进行响应，例如发送邮件；目前未配置
+
+5. Web UI：Prometheus内置一个简单的Web控制台，可以查询指标，查看配置信息或者Service Discovery等，实际工作中，查看指标或者创建仪表盘通常使用Grafana，Prometheus作为Grafana的数据源进行展示
+
+#### 监控收集需要考虑的内容
+
+数据持久化：Prometheus为时序性数据库，数据存放本地，需要创建pv和pvc进行持久化
+
+配置文件持久化：配置文件存放到本地，每次更新就可。
 #### 安装教程
 
 1. xxxx
