@@ -26,13 +26,21 @@
 #### 安装教程
 
 1. 创建命名空间namespace.yaml和node-exporter.yaml 并执行
+   
+```
     kubectl  create -f namespace.yaml
-	kubectl  create -f node-exporter.yaml
+    kubectl  create -f node-exporter.yaml
+```
+
 2. 创建Prometheus和Grafana的pv，pvc 并执行
-	kubectl  create -f prometheus-pv.yaml
-	kubectl  create -f prometheus-pvc.yaml
-	kubectl  create -f grafana-pv.yaml
-	kubectl  create -f grafana-pvc.yaml
+	
+```
+    kubectl  create -f prometheus-pv.yaml
+    kubectl  create -f prometheus-pvc.yaml
+    kubectl  create -f grafana-pv.yaml
+    kubectl  create -f grafana-pvc.yaml
+```
+
 3. 配置prometheus的configmap.yaml，添加监控的机器如：
 ```
    - job_name: '172.31.10.192'
@@ -75,6 +83,17 @@
     ./node_exporter &
 
 
+### 查看启动状态：
+![监控状态](https://images.gitee.com/uploads/images/2019/0820/100859_e6ce5bab_435593.png "QQ截图20190820100844.png")
+
+### 访问grafana
+
+http://172.16.95.123:3000
+
+配置完数据源就可以对Prometheus监控数据进行收集啦！！！
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/101456_0d2f51e7_435593.png "QQ截图1.png")
+导入模版
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0820/101846_192682da_435593.png "QQ截图2.png")
 #### 参与贡献
 
 1. Fork 本仓库
